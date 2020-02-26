@@ -33,6 +33,7 @@ public enum Language {
 	setting_windowUserResizable,
 	setting_windowWidth,
 	setting_maxRecentFiles,
+	setting_forceGraphicsSync,
 
 	// Settings > Color
 	setting_color_background,

@@ -60,6 +60,8 @@ public class TabGeneral extends SettingsTab implements ActionListener {
 
 	private JLabel maxRecentFilesLabel;
 
+	private JCheckBox forceGraphicsSync;
+
 	// ----------------------------------------------------------- CONSTRUCTORS
 
 	TabGeneral() {
@@ -126,6 +128,9 @@ public class TabGeneral extends SettingsTab implements ActionListener {
 
 		maxRecentFiles = new JTextField("" + Settings.maxRecentFiles.get(), 4);
 		maxRecentFiles.addActionListener(this);
+
+		forceGraphicsSync = new JCheckBox("" + Language.setting_forceGraphicsSync);
+		forceGraphicsSync.setSelected(Settings.forceGraphicsSync.get());
 
 		windowSizeUnitsText = new JLabel("" + Language.setting_windowWidth);
 		maxRecentFilesLabel = new JLabel("" + Language.setting_maxRecentFiles);
@@ -214,6 +219,8 @@ public class TabGeneral extends SettingsTab implements ActionListener {
 			}
 			Settings.customSplitsPath.set(path);
 		}
+
+		Settings.forceGraphicsSync.set(forceGraphicsSync.isSelected());
 	}
 
 	/**
@@ -235,7 +242,8 @@ public class TabGeneral extends SettingsTab implements ActionListener {
 				alwaysOnTopText, GBC.grid(0, 0).anchor(GBC.LINE_END).insets(5, 10)
 		);
 		add(alwaysOnTop, GBC.grid(1, 0).anchor(GBC.LINE_START));
-		add(warnOnReset, GBC.grid(1, 1).anchor(GBC.LINE_START));
+		add(forceGraphicsSync, GBC.grid(1, 1).anchor(GBC.LINE_START));
+		add(warnOnReset, GBC.grid(1, 2).anchor(GBC.LINE_START));
 
 		JPanel panelSplitsPath = new JPanel(new GridBagLayout()); {
 			panelSplitsPath.add(
@@ -251,7 +259,7 @@ public class TabGeneral extends SettingsTab implements ActionListener {
 			    GBC.grid(1, 1).anchor(GBC.LINE_START)
 			);
 		};
-		add(panelSplitsPath, GBC.grid(1, 2).anchor(GBC.LINE_START));
+		add(panelSplitsPath, GBC.grid(1, 3).anchor(GBC.LINE_START));
 
 		//add(languageText, GBC.grid(0, 2).anchor(GBC.LINE_END).insets(10, 10));
 		//add(language, GBC.grid(1, 2).fill(GBC.HORIZONTAL));
@@ -262,8 +270,8 @@ public class TabGeneral extends SettingsTab implements ActionListener {
 				comparePanel.add(buttons.nextElement());
 			}
 		}
-		add(compareText, GBC.grid(0, 3).anchor(GBC.FIRST_LINE_END).insets(14, 10));
-		add(comparePanel, GBC.grid(1, 3).fill(GBC.HORIZONTAL).insets(10, 0, 0, 0));
+		add(compareText, GBC.grid(0, 4).anchor(GBC.FIRST_LINE_END).insets(14, 10));
+		add(comparePanel, GBC.grid(1, 4).fill(GBC.HORIZONTAL).insets(10, 0, 0, 0));
 
 		JPanel accuracyPanel = new JPanel(new GridLayout(0, 1)); {
 			Enumeration<AbstractButton> buttons = accuracy.getElements();
@@ -271,18 +279,18 @@ public class TabGeneral extends SettingsTab implements ActionListener {
 				accuracyPanel.add(buttons.nextElement());
 			}
 		}
-		add(accuracyText, GBC.grid(0, 4).anchor(GBC.FIRST_LINE_END).insets(14, 10));
-		add(accuracyPanel, GBC.grid(1, 4).fill(GBC.HORIZONTAL).insets(10, 0));
+		add(accuracyText, GBC.grid(0, 5).anchor(GBC.FIRST_LINE_END).insets(14, 10));
+		add(accuracyPanel, GBC.grid(1, 5).fill(GBC.HORIZONTAL).insets(10, 0));
 
-		add(windowSizeLabel, GBC.grid(0, 5).anchor(GBC.LINE_END).insets(5, 10));
-		add(windowUserResizable, GBC.grid(1, 5).anchor(GBC.LINE_START));
+		add(windowSizeLabel, GBC.grid(0, 6).anchor(GBC.LINE_END).insets(5, 10));
+		add(windowUserResizable, GBC.grid(1, 6).anchor(GBC.LINE_START));
 		JPanel windowSizeContainer = new JPanel();
 		windowSizeContainer.add(windowSize);
 		windowSizeContainer.add(windowSizeUnitsText);
-		add(windowSizeContainer, GBC.grid(1, 6).anchor(GBC.LINE_START));
+		add(windowSizeContainer, GBC.grid(1, 7).anchor(GBC.LINE_START));
 
-		add(maxRecentFilesLabel, GBC.grid(0, 7).anchor(GBC.LINE_END).insets(5, 10));
-		add(maxRecentFiles, GBC.grid(1, 7).anchor(GBC.LINE_START).insets(0, 5));
+		add(maxRecentFilesLabel, GBC.grid(0, 8).anchor(GBC.LINE_END).insets(5, 10));
+		add(maxRecentFiles, GBC.grid(1, 8).anchor(GBC.LINE_START).insets(0, 5));
 
 	}
 
