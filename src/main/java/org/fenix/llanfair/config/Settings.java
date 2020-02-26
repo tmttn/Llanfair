@@ -42,6 +42,7 @@ public class Settings {
 	public static final Property<Integer> windowWidth = new Property<>( "windowWidth" );
 	public static final Property<Boolean> useDefaultSplitsPath = new Property<>( "useDefaultSplitsPath" );
 	public static final Property<String> customSplitsPath = new Property<>( "customSplitsPath" );
+	public static final Property<Boolean> forceGraphicsSync = new Property<>( "forceGraphicsSync" );
 
 	/* COLOR properties */
 
@@ -226,6 +227,7 @@ public class Settings {
 		setDefault( windowWidth.key, null, force );
 		setDefault( useDefaultSplitsPath.key, true, force );
 		setDefault( customSplitsPath.key, null, force );
+		setDefault( forceGraphicsSync.key, false, force );
 
 		setDefault( colorBackground.key, Color.decode("0x000000"), force );
 		setDefault( colorForeground.key, Color.decode( "0xc0c0c0" ), force );

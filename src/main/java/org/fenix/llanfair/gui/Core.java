@@ -339,6 +339,11 @@ class Core extends JPanel implements ActionListener {
 				segmentTimer.setForeground(Settings.colorTimeLostWhileBehind.get());
 			}
 		}
+
+		if (Settings.forceGraphicsSync.get()) {
+			// Force a graphics state sync to prevent the timer from stalling due to buffering
+			Toolkit.getDefaultToolkit().sync();
+		}
 	}
 
 	/**
